@@ -1,0 +1,40 @@
+<app-app-header></app-app-header>
+<!-- Search By Product Name<input type="text" [(ngModel)] = "nameSearch" />
+Search By Product Category<input type="text" [(ngModel)] = "categorySearch" /> -->
+<mat-form-field appearance="fill">
+  <mat-label>Search By Product Name</mat-label>
+  <input matInput [(ngModel)] = "nameSearch">
+</mat-form-field>
+<mat-form-field appearance="fill">
+  <mat-label>Search By Product Category</mat-label>
+  <input matInput [(ngModel)] = "categorySearch">
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+  <mat-label>Sort By</mat-label>
+  <mat-select (selectionChange) = "setValue($event.value)">
+    <mat-option value="1">Price ASC</mat-option>
+    <mat-option value="2">Rating ASC</mat-option>
+    <mat-option value="3">Price DESC</mat-option>
+    <mat-option value="4">Rating DESC</mat-option>
+  </mat-select>
+</mat-form-field>
+<button (click) = "searchProduct()"  mat-button>Search</button>
+
+<button routerLink="/checkout"  mat-button>Go to Cart</button>
+<div class="productDiv">
+  <mat-card *ngFor="let item of productList" class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{item.name}}</mat-card-title>
+      <mat-card-subtitle>Category: {{item.category}}</mat-card-subtitle>
+      <mat-card-subtitle>Rating: {{item.rating}}</mat-card-subtitle>
+      <mat-card-subtitle>Price: {{item.price}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="item.image_url" alt="Photo of a medicine">
+    <mat-card-actions>
+      <button (click) = "addProduct(item)" *ngIf="item.stock_count > 0" mat-button>Add to Cart</button>
+      <span *ngIf="item.stock_count == 0">Out of stock</span>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,53 @@
+<div class="centreAlign">
+    <button class="centreAlign" color = "primary" mat-button routerLink = "/login">Login</button>
+    </div>
+<form [formGroup] = "signUpForm" class="example-form">
+  <h2>Registration</h2>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="First Name" formControlName ="firstname">
+        <mat-error *ngIf="signUpForm.controls.firstname.invalid && signUpForm.controls.firstname.errors.required">
+          First Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Last Name" formControlName ="lastname">
+          <mat-error *ngIf="signUpForm.controls.lastname.invalid && signUpForm.controls.lastname.errors.required">
+            Last Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="Mobile Number" formControlName ="mobile_number">
+            <mat-error *ngIf="signUpForm.controls.mobile_number.invalid && signUpForm.controls.mobile_number.errors.required">
+              mobile Number is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Email" formControlName ="email">
+    <mat-error *ngIf="signUpForm.controls.email.invalid && !signUpForm.controls.email.errors.required">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="signUpForm.controls.email.invalid && signUpForm.controls.email.errors.required">
+      Email is <strong>required</strong>
+    </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+    <input type="password" matInput placeholder="Password" formControlName ="password">
+    <mat-error *ngIf="signUpForm.controls.password.invalid && signUpForm.controls.password.errors.required">
+      Password is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input type="password" matInput placeholder="Confirm Password" formControlName ="confirmPassword">
+    <mat-error *ngIf="signUpForm.controls.confirmPassword.invalid && signUpForm.controls.confirmPassword.errors.required">
+      Confirm Password is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="signUpForm.controls.confirmPassword.invalid && signUpForm.controls.confirmPassword.errors.NoPassswordMatch">
+      Confirm Password is not matched with the password
+    </mat-error>
+  </mat-form-field>
+
+  <button color = "primary" mat-button [disabled] = "!signUpForm.valid" (click) = "signUp()">Sign Up</button>
+
+</form>

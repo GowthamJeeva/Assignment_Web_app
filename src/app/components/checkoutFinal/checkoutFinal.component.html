@@ -1,0 +1,25 @@
+
+<form [formGroup] = "checkoutForm" class="example-form">
+    <h2>Checkout</h2>
+    <mat-form-field class="example-full-width">
+        <input matInput placeholder="First Name" formControlName ="name">
+        <mat-error *ngIf="checkoutForm.controls.name.invalid && checkoutForm.controls.name.errors.required">
+          First Name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Mobile Number" formControlName ="mobile_number">
+        <mat-error *ngIf="checkoutForm.controls.mobile_number.invalid && checkoutForm.controls.mobile_number.errors.required">
+          mobile Number is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Delivery Address" formControlName ="deliveryAddress">
+        <mat-error *ngIf="checkoutForm.controls.deliveryAddress.invalid && checkoutForm.controls.deliveryAddress.errors.required">
+          Delivery Address  is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <button  color = "primary" mat-button [disabled] = "!checkoutForm.valid" (click) = "submitOrder()">Submit order</button>
+  
+  </form>

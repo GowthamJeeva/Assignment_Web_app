@@ -1,0 +1,14 @@
+<app-app-header></app-app-header>
+<button routerLink="/checkoutFinal"  mat-button>Checkout</button>
+<div class="productDiv">
+  <mat-card *ngFor="let item of productList" class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{item.name}}</mat-card-title>
+      <mat-card-subtitle>Category: {{item.category}}</mat-card-subtitle>
+      <mat-card-subtitle>Rating: {{item.rating}}</mat-card-subtitle>
+      <mat-card-subtitle>Price: {{item.price}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="item.image_url" alt="Photo of a medicine">
+  </mat-card>
+</div>

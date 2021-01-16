@@ -1,0 +1,29 @@
+<div class="logo">
+  <!-- <img src="/assets/logo.png" /> -->
+</div>
+<form [formGroup] = "loginForm" class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Email" formControlName ="email">
+    <mat-error *ngIf="loginForm.controls.email.invalid && !loginForm.controls.email.errors.required">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.errors.required">
+      Email is <strong>required</strong>
+    </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+    <input type="password" matInput placeholder="Password" formControlName ="password">
+    <mat-error *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.errors.required">
+      Password is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <button color = "primary" mat-button [disabled] = "!loginForm.valid" (click) = "login()">Login</button>
+
+</form>
+
+<div class="centreAlign">
+<button color = "primary" mat-button routerLink = "/sign-up">Sign Up</button>
+<button color = "primary" mat-button routerLink = "/forgot-password">Forgot Password</button>
+</div>
